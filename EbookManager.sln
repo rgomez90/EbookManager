@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EbookManager", "EbookManager\EbookManager.csproj", "{E454851B-A789-43E8-B80B-3AE79F9773AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EbookManager.BLL", "EbookManager.BLL\EbookManager.BLL.csproj", "{1EAE8B08-FF5E-4959-ADF9-100FD0EF9AA5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E454851B-A789-43E8-B80B-3AE79F9773AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E454851B-A789-43E8-B80B-3AE79F9773AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E454851B-A789-43E8-B80B-3AE79F9773AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E454851B-A789-43E8-B80B-3AE79F9773AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EAE8B08-FF5E-4959-ADF9-100FD0EF9AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EAE8B08-FF5E-4959-ADF9-100FD0EF9AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EAE8B08-FF5E-4959-ADF9-100FD0EF9AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EAE8B08-FF5E-4959-ADF9-100FD0EF9AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA5DE510-C43C-49E2-8F8C-0EC7FC833601}
+	EndGlobalSection
+EndGlobal
