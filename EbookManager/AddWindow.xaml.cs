@@ -10,33 +10,35 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EbookManager.BLL;
+using Newtonsoft.Json;
 
 namespace EbookManager
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddWindow : Window
     {
-        public MainWindow()
+        public AddWindow()
         {
             InitializeComponent();
+            EbookService = new EbookService();
         }
+
+        private Ebook ebookViewSource;
+        private EbookService EbookService;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            System.Windows.Data.CollectionViewSource ebookViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("ebookViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // ebookViewSource.Source = [generic data source]
+            ebookViewSource = ((Ebook)(this.FindResource("Ebook")));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var w = new AddWindow();
-            w.DataContext = new Ebook();
-            w.Show();
+            EbookService.RegisterEbook(ebookViewSource);
         }
     }
 }
