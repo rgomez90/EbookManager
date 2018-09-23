@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using EbookManager.BLL;
 
 namespace EbookManager
 {
@@ -19,9 +13,12 @@ namespace EbookManager
     /// </summary>
     public partial class EbookDetails : Window
     {
-        public EbookDetails()
+        public EbookDetails(Ebook ebook)
         {
             InitializeComponent();
+            var ebookViewSource = (Ebook)FindResource("ebookViewSource");
+            ebookViewSource = ebook;
+            Image.Source= new BitmapImage(new Uri(Path.Combine(FilePaths.EbookDataDirectory, ebook.Id.ToString(),"cover.png"))).Clone();
         }
     }
 }

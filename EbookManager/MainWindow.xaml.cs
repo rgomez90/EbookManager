@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Forms;
+using EbookManager.BLL;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace EbookManager
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -24,19 +14,53 @@ namespace EbookManager
             InitializeComponent();
         }
 
+        private CollectionViewSource _ebookViewSource;
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            _ebookViewSource = (CollectionViewSource)(this.FindResource("ebookViewSource"));
+            _ebookViewSource.Source = EbookManagerInitializer.Ebooks;
+            EbookManagerInitializer.Ebooks.CollectionChanged += Ebooks_CollectionChanged;
+            SetButtonState();
+        }
 
-            System.Windows.Data.CollectionViewSource ebookViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("ebookViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // ebookViewSource.Source = [generic data source]
+        private void Ebooks_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            SetButtonState();
+        }
+
+        private void SetButtonState()
+        {
+            var state = EbookManagerInitializer.Ebooks.Any();
+            BtnDelete.IsEnabled = state;
+            BtnDetails.IsEnabled = state;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var w = new AddWindow();
-            w.DataContext = new Ebook();
-            w.Show();
+            var window = new AddWindow { DataContext = new Ebook() };
+            window.ShowDialog();
+        }
+
+        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            var res = MessageBox.Show("Dou you really want to delete the ebook?", "Delete Ebook", MessageBoxButtons.YesNo);
+            if (res != System.Windows.Forms.DialogResult.Yes) return;
+            Ebook selectedEbook = (Ebook)ebookListView.SelectedItem;
+            var service = new EbookService();
+            service.DeleteEbook(selectedEbook.Id);
+        }
+
+        private void BtnDetails_OnClick(object sender, RoutedEventArgs e)
+        {
+            var selectedEbook = (Ebook)ebookListView.SelectedItem;
+            if (selectedEbook == null)
+            {
+                MessageBox.Show("No ebook selected!");
+                return;
+            }
+            var win = new EbookDetails(selectedEbook);
+            win.ShowDialog();
         }
     }
 }

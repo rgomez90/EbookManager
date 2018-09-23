@@ -15,7 +15,7 @@ namespace EbookManager
         public string Isbn { get; set; }
         public byte[] CoverImage { get; set; }
         public FileInfo FilePath { get; set; }
-        public int Id { get; private set; }
+        public int Id { get; protected set; }
         public FileInfo EbookFile { get; set; }
 
         public void SetId(int id)

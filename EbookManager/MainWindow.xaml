@@ -3,71 +3,57 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EbookManager"
+        xmlns:local="clr-namespace:EbookManager" 
         xmlns:local1="clr-namespace:EbookManager;assembly=EbookManager.BLL" x:Class="EbookManager.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" Foreground="#FFFFF7F7" Background="White">
     <Window.Resources>
         <CollectionViewSource x:Key="ebookViewSource" d:DesignSource="{d:DesignInstance {x:Type local1:Ebook}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource ebookViewSource}">
 
-        <ListView x:Name="ebookListView" SelectionMode="Single" Margin="0,31,0,0" ItemsSource="{Binding}">
+        <ListView x:Name="ebookListView" SelectionMode="Single" Margin="0,54,0,0" ItemsSource="{Binding}" AllowDrop="True" VerticalContentAlignment="Center" TextOptions.TextFormattingMode="Ideal" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="authorColumn" Width="80" Header="Author">
+                    <GridViewColumn x:Name="titleColumn" Width="200" Header="Title">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Margin="6,-1,-6,-1" Text="{Binding Author, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                <TextBox Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="editionColumn" Width="80" Header="Edition">
+                    <GridViewColumn x:Name="authorColumn" Width="150" Header="Author">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Edition, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="editorialColumn" Width="80" Header="Editorial">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Editorial, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="isbnColumn" Width="80" Header="Isbn">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Isbn, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="registrationDateColumn" Width="80" Header="Registration Date">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <DatePicker Margin="-6,-1" SelectedDate="{Binding RegistrationDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="resumeColumn" Width="80" Header="Resume">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Resume, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="titleColumn" Width="80" Header="Title">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                <TextBox Text="{Binding Author, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn x:Name="yearColumn" Width="80" Header="Year">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Margin="-6,-1" Text="{Binding Year, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                <TextBox Text="{Binding Year, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="editionColumn" Width="80" Header="Edition">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox  Text="{Binding Edition, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="editorialColumn" Width="120" Header="Editorial">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Editorial, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="isbnColumn" Width="150" Header="Isbn">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Isbn, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -80,9 +66,8 @@
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
-        <Menu Height="31" HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
-            <Button Content="Button" Width="75" Click="Button_Click"/>
-        </Menu>
-
+        <Button Name="BtnNew"  Content="New" Height="25" FontSize="12" Click="Button_Click" Foreground="White" Margin="10,10,719,0" HorizontalContentAlignment="Center" Padding="2,4" VerticalAlignment="Top"/>
+        <Button Name="BtnDelete" Content="Delete" Height="25" FontSize="12" Click="BtnDelete_OnClick" Foreground="White" Margin="103,10,626,0" HorizontalContentAlignment="Center" Padding="2,4" VerticalAlignment="Top"/>
+        <Button Name="BtnDetails" Content="Details" Height="25" FontSize="12" Click="BtnDetails_OnClick" Foreground="White" Margin="200,10,529,0" HorizontalContentAlignment="Center" Padding="2,4" VerticalAlignment="Top"/>
     </Grid>
 </Window>
