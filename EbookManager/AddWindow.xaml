@@ -12,7 +12,7 @@
     TextElement.FontWeight="Medium"
     TextElement.FontSize="14"
     FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-    Loaded="Window_Loaded">
+    Loaded="Window_Loaded" MinWidth="758.5" MinHeight="352.5">
     <Window.Resources>
         <local1:Ebook x:Key="Ebook" />
     </Window.Resources>
@@ -80,9 +80,9 @@
             <Button x:Name="BtnCover" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="246,6,0,0" Grid.Row="5"
                     VerticalAlignment="Top" Width="21" Height="23" Click="BtnCover_OnClick"/>
         </Grid>
-        <Button Content="Button" Margin="0,0,15,15" Height="32"
+        <Button Content="Button" Margin="0,0,15,10" Height="32"
                 Click="Button_Click" HorizontalAlignment="Right" Width="99" VerticalAlignment="Bottom" Grid.Column="1" />
-        <RichTextBox Margin="395,44,15,65" VerticalContentAlignment="Stretch" AcceptsTab="True" Grid.ColumnSpan="2">
+        <RichTextBox Margin="395,44,15,52" VerticalContentAlignment="Stretch" AcceptsTab="True" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="{Binding Resume, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" />

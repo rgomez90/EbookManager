@@ -1,52 +1,85 @@
 ﻿<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EbookManager"
-        xmlns:local1="clr-namespace:EbookManager;assembly=EbookManager.BLL" x:Class="EbookManager.EbookDetails"
-        mc:Ignorable="d"
-        Title="EbookDetails" Height="438.156" Width="1102.819" >
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:EbookManager"
+    xmlns:local1="clr-namespace:EbookManager;assembly=EbookManager.BLL" x:Class="EbookManager.EbookDetails"
+    mc:Ignorable="d"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    Background="{DynamicResource MaterialDesignPaper}"
+    TextElement.FontWeight="Medium"
+    TextElement.FontSize="14"
+    FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+    Title="Ebook Details" Height="438.156" Width="1102.819">
     <Window.Resources>
-        <local1:Ebook  x:Key="ebookViewSource" x:Name="Ebook"/>
+        <local1:Ebook x:Key="ebookViewSource" x:Name="Ebook" />
     </Window.Resources>
     <Grid>
 
-        <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" DataContext="{StaticResource ebookViewSource}" Height="269" Width="384" Margin="259,70,0,0">
+        <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left"
+              DataContext="{StaticResource ebookViewSource}" Height="296" Width="384" Margin="259,70,0,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Author:"/>
-            <TextBox x:Name="authorTextBox" Width="260" VerticalAlignment="Center" Text="{Binding Author, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3,5,-129,5" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Edition:"/>
-            <TextBox x:Name="editionTextBox" Width="69" VerticalAlignment="Center" Text="{Binding Edition, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3,6,0,6" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Editorial:"/>
-            <TextBox x:Name="editorialTextBox" Width="260" VerticalAlignment="Center" Text="{Binding Editorial, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3,6,-129,6" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Isbn:"/>
-            <TextBox x:Name="isbnTextBox" Width="260" VerticalAlignment="Center" Text="{Binding Isbn, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3,6,-129,6" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Registration Date:"/>
-            <DatePicker x:Name="registrationDateDatePicker" VerticalAlignment="Center" SelectedDate="{Binding RegistrationDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="1" Width="99"/>
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0"
+                   Content="Author:" />
+            <TextBox x:Name="authorTextBox" Width="260" VerticalAlignment="Center"
+                     Text="{Binding Author, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                     Grid.Row="1" Margin="3,5,-129,5" Height="23" HorizontalAlignment="Left" Grid.Column="1" />
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0"
+                   Content="Edition:" />
+            <TextBox x:Name="editionTextBox" Width="69" VerticalAlignment="Center"
+                     Text="{Binding Edition, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                     Grid.Row="2" Margin="3,6,0,6" Height="24" HorizontalAlignment="Left" Grid.Column="1" />
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0"
+                   Content="Editorial:" />
+            <TextBox x:Name="editorialTextBox" Width="260" VerticalAlignment="Center"
+                     Text="{Binding Editorial, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                     Grid.Row="3" Margin="3,6,-129,6" Height="23" HorizontalAlignment="Left" Grid.Column="1" />
+            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0"
+                   Content="Isbn:" />
+            <TextBox x:Name="isbnTextBox" Width="260" VerticalAlignment="Center"
+                     Text="{Binding Isbn, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                     Grid.Row="4" Margin="3,6,-129,6" Height="23" HorizontalAlignment="Left" Grid.Column="1" />
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0"
+                   Content="Registration Date:" />
+            <DatePicker x:Name="registrationDateDatePicker" VerticalAlignment="Center"
+                        SelectedDate="{Binding RegistrationDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                        Grid.Row="6" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="1" Width="99" />
 
-            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Title:"/>
-            <TextBox x:Name="titleTextBox" Width="260" VerticalAlignment="Center" Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3,6,-129,6" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Year:"/>
-            <TextBox x:Name="yearTextBox" Width="260" VerticalAlignment="Center" Text="{Binding Year, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3,6,-129,6" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0"
+                   Content="Title:" />
+            <TextBox x:Name="titleTextBox" Width="260" VerticalAlignment="Center"
+                     Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                     Grid.Row="0" Margin="3,6,-129,6" Height="23" HorizontalAlignment="Left" Grid.Column="1" />
+            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0"
+                   Content="Year:" />
+            <TextBox x:Name="yearTextBox" Width="260" VerticalAlignment="Center"
+                     Text="{Binding Year, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                     Grid.Row="5" Margin="3,6,-129,6" Height="23" HorizontalAlignment="Left" Grid.Column="1" />
         </Grid>
-        <Button Content="Save" Margin="0,0,10,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
-        <Label VerticalAlignment="Top" Margin="648,39,0,0" HorizontalAlignment="Left" Content="Resume:"/>
-        <RichTextBox x:Name="resumeTextBox" Margin="648,70,10,41" VerticalScrollBarVisibility="Auto"/>
-        <Image Name="Image"  HorizontalAlignment="Left" Height="267" Margin="10,70,0,0" VerticalAlignment="Top" Width="244"/>
-        <Label Name="LblTitle" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Content="{Binding Title}"  DataContext="{StaticResource ebookViewSource}" Height="37" Width="598" FontSize="25" VerticalContentAlignment="Center" FontFamily="Franklin Gothic Medium" Foreground="#D803A9F4" FontStyle="Oblique" FontWeight="Medium"/>
+        <Button Content="Save" Margin="0,0,10,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                Width="75" />
+        <Label VerticalAlignment="Top" Margin="648,10,0,0" HorizontalAlignment="Left" Content="Resume" Padding="0,5"
+               FontWeight="SemiBold" FontSize="15" />
+        <RichTextBox x:Name="resumeTextBox" Margin="648,41,10,41" VerticalScrollBarVisibility="Auto" />
+        <Image Name="Image" HorizontalAlignment="Left" Height="267" Margin="10,70,0,0" VerticalAlignment="Top"
+               Width="244" />
+        <Label Name="LblTitle" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top"
+               Content="{Binding Title}" DataContext="{StaticResource ebookViewSource}" Height="37" Width="598"
+               FontSize="30" VerticalContentAlignment="Center" FontFamily="Franklin Gothic Medium"
+               Foreground="#D803A9F4" FontStyle="Oblique" FontWeight="Medium" Padding="0" />
     </Grid>
 </Window>

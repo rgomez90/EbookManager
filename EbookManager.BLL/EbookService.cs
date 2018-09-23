@@ -9,7 +9,7 @@ namespace EbookManager.BLL
 {
     public class EbookService
     {
-        public void RegisterEbook(Ebook ebook,string coverPath, string ebookPath)
+        public void RegisterEbook(Ebook ebook, string coverPath, string ebookPath)
         {
             int id = 1;
             if (EbookManagerInitializer.Ebooks.Any())
@@ -18,7 +18,10 @@ namespace EbookManager.BLL
             var ebookDirectory = Directory.CreateDirectory(Path.Combine(FilePaths.EbookDataDirectory, ebook.Id.ToString()));
             File.Copy(ebookPath, Path.Combine(ebookDirectory.FullName, ebook.Title));
             //Image.FromStream(new MemoryStream(ebook.CoverImage)).Save("cover", ImageFormat.Png);
-            File.Copy(coverPath, Path.Combine(ebookDirectory.FullName, "cover.png"));
+            if (!String.IsNullOrEmpty(coverPath))
+            {
+                File.Copy(coverPath, Path.Combine(ebookDirectory.FullName, "cover.png"));
+            }
             ebook.RegistrationDate = DateTime.Now;
             EbookManagerInitializer.Ebooks.Add(ebook);
             SaveEbooksFile();
@@ -35,7 +38,7 @@ namespace EbookManager.BLL
             if (id < 1) throw new ArgumentException();
             EbookManagerInitializer.Ebooks.Remove(EbookManagerInitializer.Ebooks.SingleOrDefault(x => x.Id == id));
             SaveEbooksFile();
-            Directory.Delete(Path.Combine(FilePaths.EbookDataDirectory,id.ToString()),true);
+            Directory.Delete(Path.Combine(FilePaths.EbookDataDirectory, id.ToString()), true);
         }
     }
 }
